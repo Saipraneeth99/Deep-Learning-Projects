@@ -67,7 +67,7 @@ class encoderRNN(nn.Module):
 
     def forward(self, input):
         batch_size, seqLength, feat_n = input.size()
-        print("batch_size, seqLength, feat_n",batch_size, seqLength, feat_n)
+#         print("batch_size, seqLength, feat_n",batch_size, seqLength, feat_n)
         input = input.view(-1, feat_n)
         input = self.compress(input)
         input = self.dropout(input)
@@ -96,7 +96,7 @@ class decoderRNN(nn.Module):
 
     def forward(self, encoder_final_hidden_state, encoder_output, targets=None, mode='train', tr_steps=None):
         _, batch_size, _ = encoder_final_hidden_state.size()
-        print("batch_size Decoeder",batch_size)
+#         print("batch_size Decoeder",batch_size)
         decoder_current_hidden_state = None if encoder_final_hidden_state is None else encoder_final_hidden_state
         decoder_currentInputWord = Variable(torch.ones(batch_size, 1)).long()
         decoder_currentInputWord = decoder_currentInputWord.cuda()
