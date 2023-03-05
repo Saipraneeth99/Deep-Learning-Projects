@@ -67,7 +67,7 @@ class encoderRNN(nn.Module):
 
     def forward(self, input):
         batch_size, seqLength, feat_n = input.size()
-#         print("batch_size, seqLength, feat_n",batch_size, seqLength, feat_n)
+        # print("batch_size, seqLength, feat_n",batch_size, seqLength, feat_n)
         input = input.view(-1, feat_n)
         input = self.compress(input)
         input = self.dropout(input)
@@ -96,7 +96,7 @@ class decoderRNN(nn.Module):
 
     def forward(self, encoder_final_hidden_state, encoder_output, targets=None, mode='train', tr_steps=None):
         _, batch_size, _ = encoder_final_hidden_state.size()
-#         print("batch_size Decoeder",batch_size)
+        # print("batch_size Decoeder",batch_size)
         decoder_current_hidden_state = None if encoder_final_hidden_state is None else encoder_final_hidden_state
         decoder_currentInputWord = Variable(torch.ones(batch_size, 1)).long()
         decoder_currentInputWord = decoder_currentInputWord.cuda()
@@ -190,13 +190,7 @@ def calculateLoss(featureMat, groundTruth, lengths):
 
         predict = predict[:seqLength]
         ground_truth = ground_truth[:seqLength]
-        # if flag:
-        #     predictedCaption = predict
-        #     groundTruthCaption = ground_truth
-        #     flag = False
-        # else:
-        #     predictedCaption = torch.cat((predictedCaption, predict), dim=0)
-        #     groundTruthCaption = torch.cat((groundTruthCaption, ground_truth), dim=0)
+    
 
         predictedCaption = predict if flag else torch.cat((predictedCaption, predict), dim=0)
         groundTruthCaption = ground_truth if flag else torch.cat((groundTruthCaption, ground_truth), dim=0)
@@ -250,9 +244,7 @@ if __name__ == "__main__":
     encoder = encoderRNN()
     decoder = decoderRNN(512, outputSize, vocabSize, 1024, 0.2)
     model = MODELS(encoder=encoder, decoder=decoder)
-    # summary(encoder, input_size=[(128, 80, 4096),(40, 80, 4096)])
-    # print(summary(encoder,[12]
-    # print("len(dataTrain.ind2words) +4" , len(dataTrain.ind2words) +4)
+
     for epoch in range(epochs_n):
         train(model,epoch+1,train_dataloader)
         # torch.save(model, "{}/{}.h5".format(ModelSaveLoc, 'model'+str(epoch)))
