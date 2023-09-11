@@ -1,2 +1,2 @@
 # DeepLearning
-Homework Assignments
+Deep Learning Projects
