@@ -1,2 +1,2 @@
 # DeepLearning Projects
-This page shows multiple deep learning projects
+This Repo shows multiple deep learning projects
