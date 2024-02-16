@@ -9,5 +9,5 @@ This directory is centered around the exploration and implementation of Generati
 ## Understanding_Fundamentals
 A collection of experiments designed to dissect the intricacies of neural network behavior, including the impact of generalization, the role of optimization landscapes (such as flatness of minima), and the significance of model capacity on learning dynamics.
 
-## VideoCaptionGeneration 
+## Video Caption Generation 
 An advanced endeavor to bridge video content with natural language through automatic caption generation, combining techniques from both computer vision and sequence modeling to create descriptive textual output for given video inputs using GRU based encoder-decoder.
